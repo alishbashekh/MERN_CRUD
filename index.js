@@ -24,10 +24,14 @@ app.get('/read', async (req,res)=>{
 //update
 app.get('/update', async (req,res)=>{
   let update = await userModel.findOneAndUpdate(
-      { username: "alishba123" },  // filter by existing username
-      { Name: "alishbashabbir" },  // new Name
+      { username: "alishba123" },
+      { Name: "alishbashabbir" },  
       { new: true } )
   res.send(update);
+})
+app.get('/delete', async (req,res)=>{
+  let users = await userModel.findOneAndDelete({username:"alishba123"})
+  res.send(users)
 })
 
 app.listen(3000);
